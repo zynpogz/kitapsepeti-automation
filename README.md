@@ -1,48 +1,42 @@
 # 📚 Kitapsepeti Automation Project
 
 ## 🎯 Projenin Amacı
-Bu proje, canlı bir e-ticaret sitesi olan **kitapsepeti.com** üzerinde temel kullanıcı akışlarını
-manuel ve otomasyon testleri ile doğrulamak amacıyla hazırlanmıştır.
+Bu proje, canlı bir e-ticaret sitesi olan **kitapsepeti.com** üzerinde
+temel kullanıcı akışlarının **manuel** ve **otomasyon testleri** ile
+doğrulanması amacıyla hazırlanmıştır.
 
-Amaç; kullanıcıların site üzerinde sorunsuz bir şekilde alışveriş yapabilmesini sağlamak ve
-kritik işlevlerin doğru çalıştığını test etmektir.
-
----
-
-## 🧪 Test Edilen User Story’ler
-
-| US Kodu | User Story | Açıklama |
-|--------|------------|----------|
-| US01 | Kullanıcı Girişi | Kayıtlı kullanıcı sisteme giriş yapabilmeli |
-| US02 | Ürün Arama | Kullanıcı ürün araması yapabilmeli |
-| US03 | Ürün Detay | Ürün detay sayfası görüntülenebilmeli |
-| US04 | Sepet Yönetimi | Sepete ürün ekleme, artırma ve silme |
-| US05 | Ödeme Adımı | Sipariş ve ödeme adımına geçiş |
-| US06 | Misafir Satın Alma | Üye olmadan satın alma adımına geçiş |
+Amaç; kullanıcıların site üzerinde sorunsuz bir alışveriş deneyimi
+yaşayabilmesini sağlamak ve kritik e-ticaret senaryolarının doğru
+çalıştığını test etmektir.
 
 ---
 
-## 📝 Manuel Testler
-- Manuel test senaryoları **Excel** formatında hazırlanmıştır.
-- Her User Story için **pozitif ve negatif** test senaryoları bulunmaktadır.
+## 🧩 Test Edilen User Story’ler
+
+| ID   | User Story                         | Açıklama |
+|------|------------------------------------|----------|
+| US01 | Kullanıcı Girişi                   | Kayıtlı kullanıcı olarak sisteme giriş |
+| US02 | Ürün Arama ve Listeleme            | Ürün arama, filtreleme ve listeleme |
+| US03 | Ürün Detay ve Sepete Ekleme        | Ürün detayına girip sepete ekleme |
+| US04 | Sepet Yönetimi                     | Sepette ürün adedi artırma / azaltma |
+| US05 | Checkout & Sipariş Adımı           | Adres ve ödeme adımına geçiş |
+| US06 | Misafir Olarak Satın Alma          | Üye olmadan satın alma akışı |
+
+---
+
+## 📝 Manuel Test Senaryoları
+- Manuel testler **Excel** dosyası üzerinden hazırlanmıştır.
+- Her User Story için **pozitif** ve **negatif** senaryolar yazılmıştır.
 - Senaryolar **User Story** ve **Acceptance Criteria (AC)** bazlıdır.
 
 ---
 
-## 🤖 Otomasyon Testleri
-- Cypress kullanılarak **End-to-End (E2E)** testler yazılmıştır.
-- **Page Object Model (POM)** mimarisi uygulanmıştır.
-- Her User Story için ayrı test dosyaları oluşturulmuştur.
-- Testler stabil şekilde çalışmakta ve başarılı sonuç vermektedir.
-
----
-
-## 🛠️ Kullanılan Teknolojiler
-- JavaScript  
-- Cypress (E2E test otomasyonu)  
-- Page Object Model (POM)  
-- Node.js & npm  
-- Mocha (test raporlama altyapısı)
+## ⚙️ Kullanılan Teknolojiler
+- **JavaScript**
+- **Cypress** (E2E test otomasyonu)
+- **Page Object Model (POM)**
+- **Node.js & npm**
+- **Mocha** (test raporlama altyapısı)
 
 ---
 
@@ -55,13 +49,20 @@ kritik işlevlerin doğru çalıştığını test etmektir.
 
 ## ▶️ Testleri Çalıştırma
 
-### Cypress Test Runner’ı açmak için:
-
+### Cypress Test Runner (UI mod)
 ```bash
 npx cypress open
 
-Headless modda çalıştırmak için:
+Headless mod
 npx cypress run
+
+📸 Test Çalışma Kanıtları
+US03 – Ürün Detaydan Sepete Ekleme
+
+Aşağıdaki ekran görüntüsünde, Cypress testinin başarıyla çalıştığı ve
+ürünün sepete eklendiği görülmektedir.
+
+![US03 – Ürün Sepete Ekleme](images/image-1.png)
 
 ℹ️ Notlar
 
@@ -71,4 +72,6 @@ Gerçek ödeme işlemi tamamlanmamıştır.
 
 Proje eğitim ve test amaçlı hazırlanmıştır.
 
+👩‍💻 Hazırlayan
 
+Zeynep Oğuz
