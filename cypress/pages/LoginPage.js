@@ -1,33 +1,27 @@
 class LoginPage {
-    headerLoginBtn() {
-        return cy.contains('a, button', 'Giriş Yap').filter(':visible').first();
-    }
+    elements = {
+        openAccountPanel: () =>
+            cy.get('a[href="#header-member-panel-322"][data-toggle="drawer"]').first(),
 
-    emailInput() {
-        return cy.get('input[type="email"], input[name*="email"]').filter(':visible').first();
-    }
+        emailInput: () =>
+            cy.get('input[type="email"]').filter(':visible').first(),
 
-    passwordInput() {
-        return cy.get('input[type="password"]').filter(':visible').first();
-    }
+        passwordInput: () =>
+            cy.get('input[type="password"]').filter(':visible').first(),
 
-    submitBtn() {
-        return cy.get('form:visible').first().contains('button, input', /Giriş Yap/i);
-    }
+        submitBtn: () => cy.get('#login-btn-322').should('be.visible'),
+    };
 
     visit() {
         cy.visit('/');
         cy.acceptCookies();
     }
 
-    openLogin() {
-        this.headerLoginBtn().click({ force: true });
-    }
-
     login(email, password) {
-        this.emailInput().clear().type(email, { log: false });
-        this.passwordInput().clear().type(password, { log: false });
-        this.submitBtn().click({ force: true });
+        this.elements.openAccountPanel().click();
+        this.elements.emailInput().clear().type(email, { log: false });
+        this.elements.passwordInput().clear().type(password, { log: false });
+        this.elements.submitBtn().click();
     }
 }
 

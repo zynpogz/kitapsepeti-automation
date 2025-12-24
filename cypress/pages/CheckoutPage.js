@@ -1,10 +1,25 @@
 class CheckoutPage {
-    buyButton() {
-        return cy.contains('button, a', /Satın Al|Satin Al/i).filter(':visible').first();
-    }
+    elements = {
+        buyBtn: () =>
+            cy.contains('a,button', /Satın Al|Alışverişi Tamamla|Ödemeye Geç/i, { timeout: 15000 })
+                .should('be.visible')
+                .first(),
+
+        guestCheckoutBtn: () =>
+            cy.contains('a,button', /Üye Olmadan|Misafir|Devam Et/i, { timeout: 15000 })
+                .should('be.visible')
+                .first(),
+
+        addressTitle: () =>
+            cy.contains(/Adres|Teslimat/i, { timeout: 15000 }).should('be.visible'),
+    };
 
     clickBuy() {
-        this.buyButton().click({ force: true });
+        this.elements.buyBtn().click({ force: true });
+    }
+
+    goGuestCheckout() {
+        this.elements.guestCheckoutBtn().click({ force: true });
     }
 }
 
