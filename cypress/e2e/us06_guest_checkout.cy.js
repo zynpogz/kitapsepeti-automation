@@ -1,27 +1,18 @@
+import ProductPage from '../pages/ProductPage';
 import CheckoutPage from '../pages/CheckoutPage';
 
-describe('US06 - Misafir Olarak Satin Alma Akisi', () => {
-    it('Pozitif - Uye olmadan satin alma adimina gecilebilmeli', () => {
+describe('US06 - Guest Checkout', () => {
+    it('Pozitif - Üye olmadan satın alma adımına geçilebilmeli', () => {
         cy.visit('/');
-        cy.contains('Tümünü Kabul Et').click({ force: true });
+        cy.acceptCookies();
 
-        // Ürün seç
-        cy.get('.product-item').first().click({ force: true });
+        ProductPage.openFirstProduct();
+        ProductPage.addToCart();
+        ProductPage.goToCart();
 
-        // Sepete ekle
-        cy.contains('Sepete Ekle').click({ force: true });
-        cy.contains('Sepete Git').click({ force: true });
-
-        // Satın al
         CheckoutPage.clickBuy();
+        CheckoutPage.goGuestCheckout();
 
-        // Üye olmadan devam et görünmeli
-        CheckoutPage.guestCheckoutShouldBeVisible();
-
-        // Üye olmadan devam et
-        CheckoutPage.clickGuestCheckout();
-
-        // Adres sayfası açılmalı
-        CheckoutPage.addressPageShouldBeOpened();
+        CheckoutPage.elements.addressTitle().should('be.visible');
     });
 });

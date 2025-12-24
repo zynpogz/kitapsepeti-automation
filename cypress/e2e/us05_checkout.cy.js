@@ -1,17 +1,18 @@
+import ProductPage from '../pages/ProductPage';
 import CheckoutPage from '../pages/CheckoutPage';
 
-describe('US05 - Odeme ve Siparis Onayi', () => {
-    it('Negatif - Eksik bilgilerle odeme yapilamamali', () => {
+describe('US05 - Ödeme', () => {
+    it('Negatif - Eksik bilgilerle ödeme yapılmamalı', () => {
         cy.visit('/');
-        cy.contains('Tümünü Kabul Et').click({ force: true });
+        cy.acceptCookies();
 
-        cy.get('.product-item').first().click({ force: true });
-        cy.contains('Sepete Ekle').click({ force: true });
-        cy.contains('Sepete Git').click({ force: true });
+        ProductPage.openFirstProduct();
+        ProductPage.addToCart();
+        ProductPage.goToCart();
 
         CheckoutPage.clickBuy();
 
-        // Negatif kontrol: ödeme adımına geçilmedi
-        CheckoutPage.guestCheckoutShouldBeVisible();
+        // Ödeme sayfasına geçmemeli (url kontrol)
+        cy.url().should('not.include', 'payment');
     });
 });

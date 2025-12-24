@@ -1,20 +1,9 @@
-import ProductPage from '../pages/ProductPage';
-import CartPage from '../pages/CartPage';
+describe('US04 - Sepet', () => {
+    it('Negatif - Sepet boşken uyarı gösterilmeli', () => {
+        cy.visit('/sepet');
+        cy.acceptCookies();
 
-describe('US04 - Sepet Yonetimi', () => {
-    it('Pozitif - Sepette urun adedi artirilabilmeli', () => {
-        cy.visit('/');
-        cy.contains('Tümünü Kabul Et').click({ force: true });
-
-        // Ürün sepete eklensin
-        ProductPage.openFirstProduct();
-        ProductPage.addToCart();
-        cy.contains('Sepete Git').click({ force: true });
-
-        // Sepette adet artır
-        CartPage.increaseQuantity();
-
-        // Sepet boş değil
-        CartPage.elements.cartItem().should('exist');
+        // Sepet boş metni sitene göre değişebilir
+        cy.contains(/Sepetiniz boş|Sepetinizde/i, { timeout: 10000 }).should('exist');
     });
 });

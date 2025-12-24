@@ -1,24 +1,10 @@
 class CheckoutPage {
-    elements = {
-        buyButton: () => cy.contains('Satın Al'),
-        guestCheckoutButton: () => cy.contains('Üye Olmadan Devam Et'),
-        addressTitle: () => cy.contains('Adres Bilgileri'),
-    };
+    buyButton() {
+        return cy.contains('button, a', /Satın Al|Satin Al/i).filter(':visible').first();
+    }
 
     clickBuy() {
-        this.elements.buyButton().click({ force: true });
-    }
-
-    guestCheckoutShouldBeVisible() {
-        this.elements.guestCheckoutButton().should('be.visible');
-    }
-
-    clickGuestCheckout() {
-        this.elements.guestCheckoutButton().click({ force: true });
-    }
-
-    addressPageShouldBeOpened() {
-        this.elements.addressTitle().should('exist');
+        this.buyButton().click({ force: true });
     }
 }
 

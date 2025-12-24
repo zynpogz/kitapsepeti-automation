@@ -1,18 +1,20 @@
 import LoginPage from '../pages/LoginPage';
 
-describe('User Login', () => {
-    it('Pozitif - Gecerli bilgilerle giris yapilabilmeli', () => {
-        LoginPage.visitLogin();
-        LoginPage.login('test@mail.com', 'Test1234');
+describe('US01 - User Login', () => {
+    it('Pozitif - Geçerli bilgilerle giriş yapılabilmeli', () => {
+        LoginPage.visit();
+        LoginPage.openLogin();
+        LoginPage.login(Cypress.env('USER_EMAIL'), Cypress.env('USER_PASSWORD'));
 
-        cy.url().should('not.eq', 'https://www.kitapsepeti.com/');
+        // Basit doğrulama (profil/çıkış vb. görünsün)
+        cy.contains(/Çıkış|Hesabım/i, { timeout: 10000 }).should('exist');
     });
 
-    it('Negatif - Yanlis sifre ile giris yapilamamali', () => {
-        LoginPage.visitLogin();
-        LoginPage.login('test@mail.com', 'YanlisSifre123');
+    it('Negatif - Yanlış şifre ile giriş yapılmamalı', () => {
+        LoginPage.visit();
+        LoginPage.openLogin();
+        LoginPage.login(Cypress.env('USER_EMAIL'), 'yanlisSifre123');
 
-        // Hata mesajı veya login başarısızlığı kontrolü
-        cy.contains('hatalı', { matchCase: false }).should('exist');
+        cy.contains(/hatalı|yanlış|geçersiz/i, { timeout: 10000 }).should('exist');
     });
 });

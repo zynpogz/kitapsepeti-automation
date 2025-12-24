@@ -1,28 +1,10 @@
 {
-    "user": {
-        "validEmail": "testuser@gmail.com",
-        "validPassword": "Test1234!",
-        "invalidEmail": "testdeneme01@gmail.com",
-        "invalidPassword": "Zeynep12345."
+    "validUser": {
+        "email": "test@mail.com",
+        "password": "Test1234"
     },
-    "search": {
-        "validKeyword": "Python",
-        "invalidKeyword": "agsgggagsg",
-        "categoryInvalid": "5555555"
-    },
-    "payment": {
-        "cardHolderName": "Zeynep Oğuz",
-        "cardNumber": "54875454665644",
-        "expiryDate": "1701",
-        "cvv": "173"
-    },
-    "guestAddress": {
-        "email": "test@example.com",
-        "fullname": "Zeynep Oğuz",
-        "province": "İstanbul",
-        "district": "Avcılar",
-        "neighborhood": "Mustafa Kemal Paşa mah",
-        "address": "Çetin sokak no: 36 daire :5",
-        "phone": "145548415644"
+    "invalidUser": {
+        "email": "wrong@mail.com",
+        "password": "123"
     }
 }

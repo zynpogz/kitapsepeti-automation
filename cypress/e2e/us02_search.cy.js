@@ -1,15 +1,21 @@
 import SearchPage from '../pages/SearchPage';
 
 describe('US02 - Urun Arama', () => {
-    it('Pozitif - Gecerli urun adi ile arama yapilabilmeli', () => {
+
+    it('Pozitif - Urun adi ile arama yapilabilmeli', () => {
         SearchPage.visitHome();
+
+        // Arama alanı var mı
+        cy.get('input[type="search"]').should('be.visible');
 
         SearchPage.searchProduct('roman');
 
-        // Arama sonuç sayfası açıldı mı
+        // Arama sayfası açıldı mı
         cy.url().should('include', 'arama');
 
-        // Sayfa boş da olabilir ama crash olmamalı
-        cy.get('body').should('be.visible');
+        // En az 1 ürün geldi mi
+        cy.get('.product-item')
+            .should('have.length.greaterThan', 0);
     });
+
 });
