@@ -44,14 +44,18 @@ kritik işlevlerin doğru çalıştığını test etmektir.
 - Mocha (test raporlama altyapısı)
 
 ---
+---
 
-## Proje Yapısı
+## 🗂️ Proje Yapısı
 ![Proje Yapısı](screenshots/image-2.png)
+
 ## ▶️ Testleri Çalıştırma
 
-### Cypress Test Runner’ı açmak için:
+Cypress Test Runner’ı açmak için:
+
 ```bash
 npx cypress open
+
 
 ## 📸 Test Sonuçları
 
