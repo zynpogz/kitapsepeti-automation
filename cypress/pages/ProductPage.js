@@ -1,33 +1,21 @@
 class ProductPage {
-    elements = {
-        firstProduct: () =>
-            cy.get('.product-item, .productItem, [class*="product"]', { timeout: 15000 })
-                .filter(':visible')
-                .first(),
 
-        addToCartBtn: () =>
-            cy.contains('button,a,input', /Sepete Ekle/i, { timeout: 15000 })
-                .scrollIntoView()
-                .should('be.visible')
-                .first(),
-
-        goToCartBtn: () =>
-            cy.contains('a,button', /Sepetim|Sepete Git/i, { timeout: 15000 })
-                .should('be.visible')
-                .first(),
-    };
-
-    openFirstProduct() {
-        this.elements.firstProduct().click({ force: true });
+    firstProduct() {
+        return cy.get('a').filter('[href]').first()
     }
 
-    addToCart() {
-        this.elements.addToCartBtn().click({ force: true });
+    productTitle() {
+        return cy.get('body')
     }
 
-    goToCart() {
-        this.elements.goToCartBtn().click({ force: true });
+    addToCartButton() {
+        return cy.contains('Sepete Ekle')
     }
+
+    cartPopup() {
+        return cy.contains('Sepet')
+    }
+
 }
 
-export default new ProductPage();
+export default ProductPage

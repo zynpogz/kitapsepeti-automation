@@ -1,28 +1,15 @@
 class LoginPage {
-    elements = {
-        openAccountPanel: () =>
-            cy.get('a[href="#header-member-panel-322"][data-toggle="drawer"]').first(),
-
-        emailInput: () =>
-            cy.get('input[type="email"]').filter(':visible').first(),
-
-        passwordInput: () =>
-            cy.get('input[type="password"]').filter(':visible').first(),
-
-        submitBtn: () => cy.get('#login-btn-322').should('be.visible'),
-    };
-
-    visit() {
-        cy.visit('/');
-        cy.acceptCookies();
+    email() {
+        return cy.get('input[type="email"], input[name="email"]').first()
     }
 
-    login(email, password) {
-        this.elements.openAccountPanel().click();
-        this.elements.emailInput().clear().type(email, { log: false });
-        this.elements.passwordInput().clear().type(password, { log: false });
-        this.elements.submitBtn().click();
+    password() {
+        return cy.get('input[type="password"], input[name="password"]').first()
+    }
+
+    submit() {
+        return cy.get('button[type="submit"], button').contains(/giriş yap|login/i)
     }
 }
 
-export default new LoginPage();
+export default LoginPage

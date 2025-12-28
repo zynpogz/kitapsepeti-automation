@@ -1,77 +1,24 @@
-# 📚 Kitapsepeti Automation Project
+# Kitapsepeti Cypress Automation Project
 
-## 🎯 Projenin Amacı
-Bu proje, canlı bir e-ticaret sitesi olan **kitapsepeti.com** üzerinde
-temel kullanıcı akışlarının **manuel** ve **otomasyon testleri** ile
-doğrulanması amacıyla hazırlanmıştır.
+Bu proje, Kitapsepeti e-ticaret web sitesi için hazırlanan
+manuel test senaryolarının Cypress kullanılarak otomasyon testine
+dönüştürülmesini kapsamaktadır.
 
-Amaç; kullanıcıların site üzerinde sorunsuz bir alışveriş deneyimi
-yaşayabilmesini sağlamak ve kritik e-ticaret senaryolarının doğru
-çalıştığını test etmektir.
+## Kullanılan Teknolojiler
+- JavaScript
+- Cypress
+- Node.js
 
----
+## Test Edilen Kapsam (User Story'ler)
+- US01 – Login
+- US02 – Search
+- US03 – Product
+- US04 – Cart
+- US05 – Checkout
+- US06 – Guest Checkout
 
-## 🧩 Test Edilen User Story’ler
+Her user story için pozitif ve negatif test senaryoları
+oluşturulmuş ve otomasyon testleri yazılmıştır.
 
-| ID   | User Story                         | Açıklama |
-|------|------------------------------------|----------|
-| US01 | Kullanıcı Girişi                   | Kayıtlı kullanıcı olarak sisteme giriş |
-| US02 | Ürün Arama ve Listeleme            | Ürün arama, filtreleme ve listeleme |
-| US03 | Ürün Detay ve Sepete Ekleme        | Ürün detayına girip sepete ekleme |
-| US04 | Sepet Yönetimi                     | Sepette ürün adedi artırma / azaltma |
-| US05 | Checkout & Sipariş Adımı           | Adres ve ödeme adımına geçiş |
-| US06 | Misafir Olarak Satın Alma          | Üye olmadan satın alma akışı |
-
----
-
-## 📝 Manuel Test Senaryoları
-- Manuel testler **Excel** dosyası üzerinden hazırlanmıştır.
-- Her User Story için **pozitif** ve **negatif** senaryolar yazılmıştır.
-- Senaryolar **User Story** ve **Acceptance Criteria (AC)** bazlıdır.
-
----
-
-## ⚙️ Kullanılan Teknolojiler
-- **JavaScript**
-- **Cypress** (E2E test otomasyonu)
-- **Page Object Model (POM)**
-- **Node.js & npm**
-- **Mocha** (test raporlama altyapısı)
-
----
-
-## 📁 Proje Yapısı
-
-![Proje Yapısı](images/image.png)
-
-
----
-
-## ▶️ Testleri Çalıştırma
-
-### Cypress Test Runner (UI mod)
-```bash
-npx cypress open
-
-Headless mod
-npx cypress run
-
-📸 Test Çalışma Kanıtları
-US03 – Ürün Detaydan Sepete Ekleme
-
-Aşağıdaki ekran görüntüsünde, Cypress testinin başarıyla çalıştığı ve
-ürünün sepete eklendiği görülmektedir.
-
-![US03 – Ürün Sepete Ekleme](images/image-1.png)
-
-ℹ️ Notlar
-
-Testler canlı sistem üzerinde çalıştırılmıştır.
-
-Gerçek ödeme işlemi tamamlanmamıştır.
-
-Proje eğitim ve test amaçlı hazırlanmıştır.
-
-👩‍💻 Hazırlayan
-
-Zeynep Oğuz
+## Proje Yapısı
+![Proje Yapısı](screenshots/image-2.png)

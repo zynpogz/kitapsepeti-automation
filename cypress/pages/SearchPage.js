@@ -1,28 +1,20 @@
 class SearchPage {
-    elements = {
-        searchInput: () =>
-            cy.get('input[type="search"], input[placeholder*="Aradığınız"]'),
-        productList: () => cy.get('.product-item'),
-        acceptCookiesButton: () => cy.contains('Tümünü Kabul Et'),
-    };
 
-    visitHome() {
-        cy.visit('/');
-
-        // Cookie popup varsa kapat
-        cy.get('body').then(($body) => {
-            if ($body.text().includes('Tümünü Kabul Et')) {
-                this.elements.acceptCookiesButton().click({ force: true });
-            }
-        });
+    searchInput() {
+        return cy.get('input[name="q"]')
     }
 
-    searchProduct(keyword) {
-        this.elements.searchInput()
-            .first()
-            .clear()
-            .type(`${keyword}{enter}`, { force: true });
+    searchButton() {
+        return cy.get('button[type="submit"]')
+    }
+
+    searchResultList() {
+        return cy.get('.product-list, .search-results')
+    }
+
+    noResultMessage() {
+        return cy.contains(/sonuç bulunamadı|bulunamadı/i)
     }
 }
 
-export default new SearchPage();
+export default new SearchPage()

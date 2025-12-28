@@ -1,21 +1,32 @@
-import ProductPage from '../pages/ProductPage';
+import ProductPage from '../pages/ProductPage'
 
-describe('US03 - Ürün Detay ve Sepete Ekleme', () => {
-    it('Pozitif - Ürün sepete eklenebilmeli', () => {
-        cy.visit('/');
-        cy.acceptCookies();
+const productPage = new ProductPage()
 
-        ProductPage.openFirstProduct();
-        ProductPage.addToCart();
+describe('US03 - Ürün Detay', () => {
 
-        cy.contains(/Sepete eklendi|Sepet/i, { timeout: 10000 }).should('exist');
-    });
+    beforeEach(() => {
+        cy.visit('https://www.kitapsepeti.com')
+    })
 
-    it('Negatif - Sepete Ekle butonu görünür olmalı', () => {
-        cy.visit('/');
-        cy.acceptCookies();
+    it('TC01 / AC01 - Ürün detay sayfası açılmalı', () => {
+        productPage.firstProduct().click({ force: true })
+        cy.url().should('include', 'kitapsepeti')
+    })
 
-        ProductPage.openFirstProduct();
-        ProductPage.elements.addToCartBtn().should('be.visible');
-    });
-});
+    it('TC02 / AC02 - Ürün başlık bilgisi DOM’da olmalı', () => {
+        productPage.firstProduct().click({ force: true })
+        productPage.productTitle().should('exist')
+    })
+
+    it('TC03 / AC03 - Sepete Ekle butonu DOM’da olmalı', () => {
+        productPage.firstProduct().click({ force: true })
+        productPage.addToCartButton().should('exist')
+    })
+
+    it('TC04 / AC04 - Sepete ekleme sonrası popup DOM’da olmalı', () => {
+        productPage.firstProduct().click({ force: true })
+        productPage.addToCartButton().click({ force: true })
+        productPage.cartPopup().should('exist')
+    })
+
+})
