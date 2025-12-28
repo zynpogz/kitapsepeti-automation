@@ -3,7 +3,6 @@ describe('US02 - Ürün Arama', () => {
     beforeEach(() => {
         cy.visit('/')
 
-        // Çerez popup varsa kapat
         cy.get('body').then(($body) => {
             if ($body.text().includes('Tümünü Kabul Et')) {
                 cy.contains('Tümünü Kabul Et').click({ force: true })
@@ -58,7 +57,6 @@ describe('US02 - Ürün Arama', () => {
             .click({ force: true })
             .type('{enter}', { force: true })
 
-        // URL değişmemeli
         cy.url().should('eq', Cypress.config().baseUrl + '/')
     })
 
